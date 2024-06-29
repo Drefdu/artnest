@@ -1,0 +1,11 @@
+{
+  "name": "galeria_fotos",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon ."
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
