@@ -1,0 +1,102 @@
+/* Formato del contenedor de carga de imágenes */
+.upload__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.upload__container h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.upload__container form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.upload__container input[type="file"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+}
+
+.upload__container button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #5A67D8;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.upload__container button:hover {
+    background-color: #434190;
+}
+
+/* Estilo de las tarjetas */
+.cards__container {
+    margin-top: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 300px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+    position: relative; /* Necesario para posicionar el icono */
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card__image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card__icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.card__tags {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.card__tags li {
+    list-style: none;
+    background-color: #333;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9em;
+}
+
+.card__title {
+    text-align: center;
+    padding: 10px 0;
+    color: #fff;
+    font-size: 1.2em;
+}

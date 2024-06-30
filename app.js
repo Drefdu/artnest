@@ -2,55 +2,39 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const port = 3000;
+const connectDb = require('./controllers/DB');
+const dotenv = require("dotenv");
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 
-app.engine(".html", require("ejs").__express);
+//Rutas de vistas
+const routes = require('./routes/routes');
+//Rutas de funciones
+const routesFunc = require('./routes/funciones.routes');
 
+dotenv.config();
+connectDb();
+//Middlewares
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
+app.use(cookieParser());
+app.use(session({
+    secret:'keyboard car',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
+app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "html");
-
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", (req, res) => {
-  res.render("index");
-});
 
-
-
-////////////////////////
-app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'formularios/login.html'));
-});
-
-app.get('/register', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'formularios/register.html'));
-});
-
-app.post('/login', (req, res) => {
-  // Simulate login validation
-  if (req.body.username === 'user' && req.body.password === 'password') {
-      req.session.user = req.body.username;
-      return res.redirect('/');
-  }
-  res.redirect('/login');
-});
-
-app.post('/register', (req, res) => {
-  // Handle user registration logic here
-  res.redirect('/login');
-});
-
-app.use((req, res, next) => {
-  if (!req.session.user && req.path !== '/login' && req.path !== '/register') {
-      return res.redirect('/login');
-  }
-  next();
-});
-
-////////////////////////
-
-
-
-
+/* Rutas */
+app.use("/", routes);
+app.use("/", routesFunc);
 
 app.listen(port, () => {
   console.log(`Aplicacion corriendo en http://localhost:${port}`);

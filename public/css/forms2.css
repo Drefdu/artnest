@@ -1,0 +1,126 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    background-color: #10141f;
+    color: #fff;
+    min-width: 100vw;
+    max-width: 100vw;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Estilos de contenedor principal */
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    height: 80%;
+    border: 1px solid #31436b;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.container.reverse {
+    flex-direction: row-reverse;
+}
+
+/* Estilos del carrusel */
+.carousel {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+
+.slides img {
+    width: 33.3333%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@keyframes slide {
+    0% { transform: translateX(0%); }
+    33% { transform: translateX(-100%); }
+    66% { transform: translateX(-200%); }
+    100% { transform: translateX(0%); }
+}
+
+/* Estilos del contenedor de formularios */
+.form-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #161d2f;
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-container form .form-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.form-container form input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.file-input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2a2a2a;
+    color: #fff;
+}
+
+.form-container form button {
+    padding: 10px;
+    background-color: #ff4548;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-container form button:hover {
+    background-color: #ff6567;
+}
+
+.form-container p {
+    margin-top: 10px;
+}
