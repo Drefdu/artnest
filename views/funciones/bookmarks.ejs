@@ -1,0 +1,28 @@
+<%- include('../layouts/header.ejs') -%>
+<link rel="stylesheet" href="/css/bookmarks.css">
+<body>
+    <%- include('../navbar.ejs') -%>
+    <div class="content__header">
+        <form class="search__container">
+            <label class="search__button">
+                <i class="search__icon fa-solid fa-magnifying-glass"><button type="submit"></button></i>
+                <input class="search__input" type="text" placeholder="Busca tus imágenes favoritas">
+            </label>
+        </form>
+    </div>
+    <section class="content">
+        <div class="cards__container" id="bookmarkedCardsContainer">
+            
+        </div>
+    </section>
+
+    
+    <div id="bookmarkImageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="bookmarkModalImage">
+        <div id="bookmarkCaption"></div>
+    </div>
+
+    <script src="/js/bookmark.js"></script> 
+</body>
+<%- include('../layouts/footer.ejs') -%>

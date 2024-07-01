@@ -1,0 +1,13 @@
+<%- include('layouts/header.ejs') -%>
+<body class="bg-light">
+    <div class="container error-container">
+        <h1><%= message %></h1>
+        <button onclick="goBack()" class="btn btn-primary">Volver a la página anterior</button>
+    </div>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+<%- include('layouts/footer.ejs') -%>
