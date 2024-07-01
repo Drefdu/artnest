@@ -1,0 +1,33 @@
+<%- include('../layouts/header.ejs') -%>
+<link rel="stylesheet" href="/css/upload.css">
+<body>
+    <%- include('../navbar.ejs') -%>
+
+    <div class="content__header">
+        <form class="search__container">
+            <label class="search__button">
+                <i class="search__icon fa-solid fa-magnifying-glass"><button type="submit"></button></i>
+                <input class="search__input" type="text" placeholder="Busca tus imágenes favoritas">
+            </label>
+        </form>
+
+        <div class="upload__container" style="color: white;">
+            <h2>Subir Nueva Imagen</h2>
+            <form id="uploadForm" enctype="multipart/form-data">
+                <input id="fileInput" type="file" name="imagen" accept="image/*" >
+                <button type="submit">Subir imagen</button>
+            </form>            
+        </div>
+    </div>
+    
+    <section class="content">
+        <div class="cards__container" id="userCardsContainer">
+            
+        </div>
+    </section>
+    <script>
+        const usuarioCorreo = '<%= Usuario.correo %>';
+    </script>
+    <script src="/js/userImages.js"></script>
+</body>
+<%- include('../layouts/footer.ejs') -%>
