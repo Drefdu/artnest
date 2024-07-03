@@ -53,6 +53,7 @@ body {
     transition: all 100ms ease-in-out;
     width: 3rem;
     height: 3rem;
+    border-radius: 2rem;
 }
 
 .nav__item.active {
@@ -85,8 +86,20 @@ body {
 
 .content {
     width: calc(100% - 8rem);
-    padding-top: 100px;
+    padding-top: 120px;
     overflow-y: scroll;
+}
+
+.content__title {
+    color: #fff;
+    margin-top: 3rem;
+}
+
+.content__main-title {
+    color: #fff;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
 }
 
 .content__header {
@@ -100,7 +113,7 @@ body {
 }
 
 .search__button {
-    background-color: #1b1c1d;
+    background-color: transparent;
     padding: 0rem;
     width: 95%;
     height: auto;
@@ -149,12 +162,19 @@ body {
 
 .cards__container {
     max-width: 95%;
-    padding-top: 1.5rem;
+    padding-top: 1rem;
     display: grid;
     grid-template-columns: repeat(4, minmax(300px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(250px, 250px));
-    gap: 20px;
+    grid-template-rows: repeat(auto-fill, minmax(220px, 220px));
+    gap: 40px;
     padding-left: 0;
+}
+
+.cards__container--main {
+    max-width: 95%;
+    padding-left: 0;
+    display: flex !important;
+
 }
 
 .card {
@@ -163,9 +183,25 @@ body {
     position: relative;
 }
 
+.card--main {
+    width: 500px;
+    min-width: 300px;
+    max-width: 500px !important;
+    height: auto;
+}
+
+.card__image-container{
+    max-width: 100%;
+    max-height: 190px;
+    min-height: 180px;
+    overflow: hidden;
+    border-radius: 0.5rem;
+}
+
 .card__image {
     max-width: 100%;
     height: auto;
+    
 }
 
 .card__icon {
@@ -182,10 +218,11 @@ body {
     border-radius: 2rem;
     text-align: center;
     transition: all 200ms ease-out;
+    z-index: 30;
 }
 
 .card__icon:hover {
-    background-color: #e6d8d8;
+    background-color: #756b6b;
 }
 
 .card__tags {
@@ -198,6 +235,29 @@ body {
     font-size: 0.9rem;
 }
 
+.card__tags-main {
+    position: absolute;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+    gap: 15px;
+    color: #756b6b;
+    font-size: 0.9rem;
+    bottom: 55px;
+    left: 30px;
+    z-index: 40;
+}
+
 .card__title {
     color: #fff;
+}
+
+.card__title-main {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    color: #fff !important;
+    z-index: 40;
+    font-weight: 500;
 }

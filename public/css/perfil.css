@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    background-color: #10141f;
+    min-width: 100vw;
+    max-width: 100vw;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: row;
+}
+
+.nav__container {
+    min-height: 100vh;
+    min-width: 8rem;
+    max-width: 8rem;
+    display: flex;
+    justify-content: center;
+}
+
+.nav {
+    background-color: #161d2f;
+    border-radius: 1.3rem;
+    min-width: 4.5rem;
+    max-width: 4.5rem;
+    min-height: 90vh;
+    margin-top: 40px;
+    position: fixed;
+}
+
+.nav__items {
+    display: flex;
+    min-height: 90vh;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    list-style: none;
+    gap: 15px;
+}
+
+.nav__item {
+    color: #586a90;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    transition: all 100ms ease-in-out;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 2rem;
+}
+
+.nav__item.active {
+    color: #fff;
+}
+
+.nav__item--first {
+    color: #ff4548;
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    margin-top: 20px
+}
+
+.nav__item--last {
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+
+.nav__item:hover {
+    background-color: #31436b;
+    color: #fff;
+    padding: 0.8rem;
+    border-radius: 2rem;
+}
+
+.nav__item--first:hover {
+    background-color: transparent;
+    color: #ff4548;;
+}
+
+.content {
+    width: calc(100% - 8rem);
+    padding-top: 35px;
+    overflow-y: scroll;
+}
+
+.content__title {
+    color: #fff;
+}
+
+.content__main-title {
+    color: #fff;
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+.content__subtitle {
+    color: #fff;
+    margin-top: 1rem;
+}
+
+.content__button {
+    background-color: #161d2f;
+    border: none;
+    border-radius: 0.5rem;
+    color: #fff;
+    padding: 7px 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    margin-top: auto;
+}
+
+
+

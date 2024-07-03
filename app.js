@@ -14,6 +14,10 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.get("/perfil", (req, res) => {
+  res.render("perfil");
+});
+
 app.listen(port, () => {
   console.log(`Aplicacion corriendo en http://localhost:${port}`);
 });
