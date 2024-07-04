@@ -92,7 +92,7 @@ router.post('/database/login', async (req, res) => {
         }
         req.session.usuario = usuario;
         req.session.save()
-        return res.render("index", { Usuario: req.session.usuario });
+        return res.redirect('/')
     } catch (error) {
         return res.render("error", { message: error.message });
     }

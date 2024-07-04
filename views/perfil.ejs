@@ -1,0 +1,35 @@
+<%- include('layouts/header.ejs') -%>
+<link rel="stylesheet" href="css/perfil.css">
+<body>
+    <%- include('navbar.ejs') -%>
+
+    <div class="content__header"></div>
+
+    <section class="content">
+        <img src="" alt="">
+        <h2 class="content__main-title"> <%= Usuario.nombre %> <%= Usuario.apellidos %></h1>
+        <h3 class="content__subtitle">Correo: <%= Usuario.correo %></h3>
+        <h3 class="content__subtitle">Telefono: <%= Usuario.telefono %></h3>
+        <h3 class="content__subtitle" id="fotos-subidas">Fotos subidas: Cargando...</h3>
+    </section>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const response = await fetch('/database/imagenes');
+                if (!response.ok) {
+                    throw new Error('Error al obtener las imágenes');
+                }
+                const imagenes = await response.json();
+                const user = "<%= Usuario.correo %>";
+                const userImages = imagenes.filter(imagen => imagen.correo === user);
+                document.getElementById('fotos-subidas').textContent = `Fotos subidas: ${userImages.length}`;
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('fotos-subidas').textContent = 'Fotos subidas: Error al cargar';
+            }
+        });
+    </script>
+</body>
+<%- include('layouts/footer.ejs') -%>

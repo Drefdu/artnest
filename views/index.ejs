@@ -1,5 +1,4 @@
 <%- include('layouts/header.ejs') -%>
-<link rel="stylesheet" href="/css/home.css">
 <body>
     <%- include('navbar.ejs') -%>
     <div class="content__header">
@@ -11,8 +10,25 @@
         </form>
     </div>
     <section class="content">
+        <h1 class="content__main-title">Las mejores fotos</h1>
+        <div class="marquee">
+            <ul class="marquee-content">
+                <li>
+                    <div class="card">
+                        <img class="card__image--main" src="http://localhost:3000/assets/darwin-collage-animals.png" alt="">
+                        <!-- <i class="card__icon fa-regular fa-bookmark"></i> -->
+                        <ul class="card__tags-main">
+                            <li>2024</li>
+                            <li>Collage</li>
+                        </ul>
+                        <h3 class="card__title-main">Darwin</h3>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <h2 class="content__title">Fotos recomendadas para ti</h2>
         <div class="cards__container" id="cardsContainer">
-            
+
         </div>
     </section>
 
@@ -26,4 +42,19 @@
     <script src="/js/gallery.js"></script>
     <script src="/js/bookmark.js"></script> 
 </body>
+
+<script>
+    const root = document.documentElement;
+    const marqueeElementsDisplayed = getComputedStyle(root).getPropertyValue(
+    "--marquee-elements-displayed"
+    );
+    const marqueeContent = document.querySelector("ul.marquee-content");
+
+    root.style.setProperty("--marquee-elements", marqueeContent.children.length);
+
+    for (let i = 0; i < marqueeElementsDisplayed; i++) {
+    marqueeContent.appendChild(marqueeContent.children[i].cloneNode(true));
+    }
+
+</script>
 <%- include('layouts/footer.ejs') -%>

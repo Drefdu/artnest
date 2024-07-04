@@ -23,6 +23,21 @@ router.get('/upload', (req,res)=>{
     }
 });
 
+router.get("/perfil", (req, res) => {
+  if (req.session.usuario) {
+    res.render("perfil", {
+      Usuario: req.session.usuario,
+      mensaje: "",
+    });
+  } else {
+    res.render("perfil", {
+      Usuario: req.session.usuario,
+      mensaje: "No hay una sesión iniciada",
+    });
+  }
+});
+
+
 router.get('/bookmarks', (req,res)=>{
     if(req.session.usuario){
         res.render("funciones/bookmarks", { Usuario: req.session.usuario, mensaje:"" })

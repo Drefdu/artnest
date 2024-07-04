@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             card.classList.add('card');
             card.innerHTML = `
                 <img class="card__image" src="data:image/png;base64,${imagen.imagen}" alt="">
-                <i class="card__icon fa-regular fa-bookmark"></i>
+
                 <ul class="card__tags">
                     <li>${imagen.nombre}</li>
                     <li>${imagen.apellidos}</li>

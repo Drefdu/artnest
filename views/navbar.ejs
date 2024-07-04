@@ -1,45 +1,48 @@
 <% if (Usuario) { %>
 
-    <style>
-        .nav__item--icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+<style>
+    .nav__item--icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-.nav__user-photo {
-    width: 40px; 
-    height: 40px; 
-    border-radius: 50%;
-    object-fit: cover;
-}
-    </style>
-    <aside class="nav__container">
-        <nav class="nav">
-            <ul class="nav__items">
-                <li class="nav__item nav__item--first"><i class="fa-solid fa-image"></i></li>
-                <a href="/"><li class="nav__item"><i class="fa-solid fa-house"></i></li></a>
-                <li class="nav__item"><i class="fa-solid fa-bookmark"></i></li>
-                <a href="/upload"><li class="nav__item"><i class="fa-solid fa-cloud-arrow-up"></i></li></a>
-                <li class="nav__item"><i class="fa-solid fa-palette"></i></li>
-                <li class="nav__item nav__item--icon">
-                    <img src="data:image/png;base64,<%= Usuario.foto %>" alt="Usuario" class="nav__user-photo">
-                </li>
-                <a href="/logout" class="nav__item nav__item--last"><i class="fa-solid fa-power-off"></i></a>
-            </ul>
-        </nav>
-    </aside>
+    .nav__user-photo {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+</style>
+<aside class="nav__container">
+    <nav class="nav">
+        <ul class="nav__items">
+            <li class="nav__item nav__item--icon nav__item--first">
+                <a href="/perfil"><img src="data:image/png;base64,<%= Usuario.foto %>" alt="Usuario" class="nav__user-photo" /></a>
+            </li>
+            <a href="/">
+                <li class="nav__item"><i class="fa-solid fa-house"></i></li>
+            </a>
+            <a href="/upload">
+                <li class="nav__item"><i class="fa-solid fa-cloud-arrow-up"></i></li>
+            </a>
+            <a href="/logout" class="nav__item nav__item--last"><i class="fa-solid fa-power-off"></i></a>
+        </ul>
+    </nav>
+</aside>
 <% } else { %>
-    <aside class="nav__container">
-        <nav class="nav">
-            <ul class="nav__items">
-                <li class="nav__item nav__item--first"><i class="fa-solid fa-image"></i></li>
-                <a href="/"><li class="nav__item"><i class="fa-solid fa-house"></i></li></a>
-                <li class="nav__item"><i class="fa-solid fa-bookmark"></i></li>
-                <a href="/login"><li class="nav__item"><i class="fa-solid fa-cloud-arrow-up"></i></a>
-                <li class="nav__item"><i class="fa-solid fa-palette"></i></li>
-                <a href="/login" class="nav__item nav__item--last"><i class="fa-solid fa-user"></i></a>
-            </ul>
-        </nav>
-    </aside>
+<aside class="nav__container">
+    <nav class="nav">
+        <ul class="nav__items">
+            <a href="/login" class="nav__item nav__item--first"><i class="fa-solid fa-user"></i></a>
+            <a href="/">
+                <li class="nav__item"><i class="fa-solid fa-house"></i></li>
+            </a>
+            <!-- <li class="nav__item"><i class="fa-solid fa-bookmark"></i></li> -->
+            <!-- <a href="/login">
+                <li class="nav__item"><i class="fa-solid fa-cloud-arrow-up"></i></li>
+            </a> -->
+        </ul>
+    </nav>
+</aside>
 <% } %>
