@@ -3,8 +3,8 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-// DB_MONGO = process.env.CONNECTION;
-DB_MONGO = process.env.CONNECTIONLOCAL;
+DB_MONGO = process.env.CONNECTION;
+// DB_MONGO = process.env.CONNECTIONLOCAL;
 const connectDb = async () => {
   try {
     await mongoose.connect(DB_MONGO, {
