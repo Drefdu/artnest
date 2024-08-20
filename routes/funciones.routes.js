@@ -6,10 +6,38 @@ const multer = require('multer');
 const fs = require('fs');
 const path = require("path");
 const crypto = require('crypto');
+const axios = require('axios');
 
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
+
+const url = 'https://rest.clicksend.com/v3/sms/send';
+const username = 'Drefdu404';
+const password = 'DD5019BE-1C87-0D5D-9307-0851DDCF4232';
+
+
+router.post('/confirmation', async (req, res) => {
+    let { code } = req.body;
+
+    console.log(code);
+
+    try {
+        let user = await Usuario.findOne({ code: code });
+
+        if (!user) {
+            return res.send('<script>alert("Código inválido"); window.location.href = "/confirmation";</script>');
+        }
+
+
+        await Usuario.updateOne({ code: code }, { $set: { code_confirmed: true } });
+
+        return res.render("formularios/login", { mensaje: "El usuario ha sido creado satisfactoriamente" });
+    } catch (error) {
+        console.error("Error during confirmation process:", error);
+        return res.status(500).send('<script>alert("Ocurrió un error. Por favor, inténtalo de nuevo."); window.location.href = "/confirmation";</script>');
+    }
+});
 
 
 router.post('/database/registro', upload.single('Foto'), async (req, res) => {
@@ -49,6 +77,8 @@ router.post('/database/registro', upload.single('Foto'), async (req, res) => {
         let data = hash.update(Password, 'utf-8');
         let gen_hash = data.digest('hex');
 
+        let confirmationCode = Math.floor(10000 + Math.random() * 90000);
+
        
         const usuario = new Usuario({
             nombre: Nombre,
@@ -56,11 +86,47 @@ router.post('/database/registro', upload.single('Foto'), async (req, res) => {
             correo: Correo,
             telefono: Telefono,
             password: gen_hash,
-            foto: Foto
+            foto: Foto,
+            code: confirmationCode,
+            code_confirmed: false
         });
+
         const NuevoUsuario = await usuario.save();
 
-        return res.render("formularios/login", { mensaje: "El usuario ha sido creado satisfactoriamente" });
+
+        const sms = {
+            messages: [
+                {
+                    body: `Tu codigo de confirmacion es: ${confirmationCode}`,
+                    to: `+52${Telefono}`,
+                    from: "{{from}}"
+                }
+            ]
+        };
+    
+        axios.post(url, sms, {
+            auth: {
+                username: username,
+                password: password
+            }
+        })
+        .then(response => {
+            console.log('Respuesta:', response.data);
+            return res.render('confirmation')
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            res.send('<script>alert("Algo a fallado"); window.location.href = "/login";</script>');
+        });
+
+        
+
+
+        
+
+
+
+        // return res.render("formularios/login", { mensaje: "El usuario ha sido creado satisfactoriamente" });
     } catch (error) {
         if (error.code === 11000) { 
             const campoDuplicado = Object.keys(error.keyPattern)[0];
@@ -90,9 +156,19 @@ router.post('/database/login', async (req, res) => {
         if (gen_hash !== usuario.password) {
             return res.render("formularios/login", { mensaje: "Contraseña incorrecta" });
         }
-        req.session.usuario = usuario;
-        req.session.save()
-        return res.redirect('/')
+        
+
+        if(!usuario.code_confirmed) {
+            return res.render('confirmation')
+        } else {
+
+            req.session.usuario = usuario;
+            req.session.save()
+
+            return res.redirect('/')
+        }
+
+        
     } catch (error) {
         return res.render("error", { message: error.message });
     }

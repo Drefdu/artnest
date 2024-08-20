@@ -48,4 +48,8 @@ router.get('/bookmarks', (req,res)=>{
 });
 
 
+router.get('/confirmation', (req, res) => {
+  res.render('confirmation');
+});
+
 module.exports = router;

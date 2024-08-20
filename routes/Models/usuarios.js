@@ -33,5 +33,11 @@ const UsuarioSchema = new mongoose.Schema({
     resetPasswordExpires: {
         type: Date
     },
+    code: {
+        type: Number
+    },
+    code_confirmed: {
+        type: Boolean
+    }
 });
 module.exports = mongoose.model('Usuario', UsuarioSchema);
