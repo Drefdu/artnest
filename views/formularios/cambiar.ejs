@@ -1,0 +1,37 @@
+<% if (correoSave) { %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtNest</title>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="carousel">
+            <div class="slides">
+                <img src="/assets/darwin-collage-animals.png" alt="Image 1">
+                <img src="/assets/darwin-collage-animals.png" alt="Image 2">
+                <img src="/assets/darwin-collage-animals.png" alt="Image 3">
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h2>Cambiar Contraseña</h2>
+            <form action="/database/cambiar-contrasena" method="post">
+                <input type="hidden" name="Correo" id="Correo" value="<%= correoSave %>">
+                <input type="password" placeholder="Nueva Contraseña" id="NuevaPassword" name="NuevaPassword" required />
+                <input type="password" placeholder="Confirmar Nueva Contraseña" id="ConfirmarPassword" name="ConfirmarPassword" required />
+                <button type="submit">Cambiar Contraseña</button>
+            </form>            
+        </div>
+    </div>
+    <script src="js/carousel.js"></script>
+</body>
+<% } %>
+<%- include('../layouts/footer.ejs') -%>

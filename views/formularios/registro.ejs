@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,11 @@
     <link rel="stylesheet" href="/css/forms2.css">
 </head>
 <script>
-    window.onload = function() {
+    window.onload = function () {
         '<% if (mensaje) { %>'
-            setTimeout(function() {
-                alert("<%= mensaje %>");
-            }, 100);
+        setTimeout(function () {
+            alert("<%= mensaje %>");
+        }, 100);
         '<% } %>'
     };
 </script>
@@ -23,15 +24,40 @@
             <form action="/database/registro" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <input type="text" placeholder="Nombre" id="Nombre" name="Nombre" autocomplete="off" required />
-                    <input type="text" placeholder="Apellidos" id="Apellidos" name="Apellidos" autocomplete="off" required />
+                    <input type="text" placeholder="Apellidos" id="Apellidos" name="Apellidos" autocomplete="off"
+                        required />
                 </div>
                 <div class="form-group">
                     <input type="email" placeholder="Correo" id="Correo" name="Correo" autocomplete="off" required />
-                    <input type="text" placeholder="Telefono" id="Telefono" name="Telefono" onkeypress="return /[0-9]/.test(event.key)" maxlength="10" autocomplete="off" required />
+                    <input type="text" placeholder="Telefono" id="Telefono" name="Telefono"
+                        onkeypress="return /[0-9]/.test(event.key)" maxlength="10" autocomplete="off" required />
                 </div>
                 <div class="form-group">
-                    <input type="password" placeholder="Contraseña" id="Password" name="Password" onkeypress="return /[a-zA-Z0-9!#$%&\/?\\¿¡+*~{[^`},;.:_-]/.test(event.key)" title="La contraseña debe contener letras mayúsculas y minúsculas, números y al menos uno de los siguientes símbolos: !#$%&amp;/?\¿¡+*~{[^`},;.:-_" autocomplete="off" required />
-                    <input type="password" placeholder="Confirmar Contraseña" id="ConfirmarPassword" name="ConfirmarPassword" onkeypress="return /[a-zA-Z0-9!#$%&\/?\\¿¡+*~{[^`},;.:_-]/.test(event.key)" title="La contraseña debe contener letras mayúsculas y minúsculas, números y al menos uno de los siguientes símbolos: !#$%&amp;/?\¿¡+*~{[^`},;.:-_" autocomplete="off" required />
+                    <input type="password" placeholder="Contraseña" id="Password" name="Password"
+                        onkeypress="return /[a-zA-Z0-9!#$%&\/?\\¿¡+*~{[^`},;.:_-]/.test(event.key)"
+                        title="La contraseña debe contener letras mayúsculas y minúsculas, números y al menos uno de los siguientes símbolos: !#$%&amp;/?\¿¡+*~{[^`},;.:-_"
+                        autocomplete="off" required />
+                    <input type="password" placeholder="Confirmar Contraseña" id="ConfirmarPassword"
+                        name="ConfirmarPassword"
+                        onkeypress="return /[a-zA-Z0-9!#$%&\/?\\¿¡+*~{[^`},;.:_-]/.test(event.key)"
+                        title="La contraseña debe contener letras mayúsculas y minúsculas, números y al menos uno de los siguientes símbolos: !#$%&amp;/?\¿¡+*~{[^`},;.:-_"
+                        autocomplete="off" required />
+                </div>
+                <div class="form-group">
+                    <label for="PreguntaSeguridad">Selecciona una pregunta de seguridad:</label>
+                    <select id="PreguntaSeguridad" name="PreguntaSeguridad" required>
+                        <option value="">-- Selecciona una pregunta --</option>
+                        <option value="nombre_mascota">¿Cuál es el nombre de tu primera mascota?</option>
+                        <option value="ciudad_nacimiento">¿En qué ciudad naciste?</option>
+                        <option value="nombre_escuela">¿Cuál es el nombre de tu escuela primaria?</option>
+                        <option value="mejor_amigo_infancia">¿Cuál es el nombre de tu mejor amigo de la infancia?
+                        </option>
+                        <option value="deporte_favorito">¿Cuál es tu deporte favorito?</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Respuesta a la pregunta de seguridad" id="RespuestaSeguridad"
+                        name="RespuestaSeguridad" required />
                 </div>
                 <input type="file" id="Foto" name="Foto" accept="image/*" class="file-input" />
                 <button type="submit">Registrarse</button>

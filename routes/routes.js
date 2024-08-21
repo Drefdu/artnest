@@ -13,6 +13,14 @@ router.get("/login", (req, res) => {
 router.get("/registro", (req, res) => {
     res.render("formularios/registro", { Usuario: req.session.usuario, mensaje:"" });
 });
+//recuperar contraseña
+router.get("/cambiar_contra", (req, res) => {
+  res.render("formularios/rep_contra", { Usuario: req.session.usuario, mensaje:"" });
+});
+
+router.get("/cambiar", (req, res) => {
+  res.render("formularios/cambiar", { Usuario: req.session.usuario, mensaje:"", correoSave:"" });
+});
 //Upload
 router.get('/upload', (req,res)=>{
     if(req.session.usuario){

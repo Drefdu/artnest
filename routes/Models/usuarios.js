@@ -38,6 +38,12 @@ const UsuarioSchema = new mongoose.Schema({
     },
     code_confirmed: {
         type: Boolean
+    },
+    preguntaSeguridad: {
+        type: String
+    },
+    respuestaSeguridad: {
+        type: String
     }
 });
 module.exports = mongoose.model('Usuario', UsuarioSchema);
