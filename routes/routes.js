@@ -52,4 +52,8 @@ router.get('/confirmation', (req, res) => {
   res.render('confirmation');
 });
 
+router.get('/comprar/imagen', (req, res) => {
+  res.render('comprar');
+})
+
 module.exports = router;

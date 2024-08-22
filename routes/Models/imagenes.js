@@ -20,6 +20,9 @@ const ImagenSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    price: {
+        type: Number
+    }
 });
 
 module.exports = mongoose.model('Imagen', ImagenSchema);

@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <ul class="card__tags">
                     <li>${imagen.nombre}</li>
                     <li>${imagen.apellidos}</li>
+                    <li>$1000</li>
                 </ul>
                 <h3 class="card__title">${imagen.nombreImagen}</h3>
             `;
@@ -57,6 +58,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         modal.style.display = 'block';
         modalImg.src = `data:image/png;base64,${imagen.imagen}`;
         captionText.innerHTML = `${imagen.nombre} ${imagen.apellidos} - ${imagen.nombreImagen}`;
+    }
+
+    modalImg.onclick = () => {
+        window.location.href = '/comprar/imagen'
     }
 
     closeBtn.onclick = function() {

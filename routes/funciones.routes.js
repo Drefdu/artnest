@@ -13,8 +13,8 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 const url = 'https://rest.clicksend.com/v3/sms/send';
-const username = 'Drefdu404';
-const password = 'DD5019BE-1C87-0D5D-9307-0851DDCF4232';
+const username = 'eduelcrack33@gmaial.com';
+const password = '874F1AB5-6774-2CAC-1C7C-AC842085EEAB';
 
 
 router.post('/confirmation', async (req, res) => {
@@ -211,12 +211,16 @@ router.post('/upload', upload.single('imagen'), async (req, res) => {
         const base64Image = req.file.buffer.toString('base64');
         // Guardar la imagen en la base de datos o hacer lo que sea necesario
         // Aquí se guarda en la base de datos de ejemplo
+ 
+        console.log(req.price)
+
         const nuevaImagen = new Imagen({
             nombreImagen: req.file.originalname,
             imagen: base64Image,
             correo: req.session.usuario.correo,
             nombre: req.session.usuario.nombre,
-            apellidos: req.session.usuario.apellidos
+            apellidos: req.session.usuario.apellidos,
+            price: req.price
         });
 
         await nuevaImagen.save();

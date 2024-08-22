@@ -8,7 +8,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             event.preventDefault();
     
             const formData = new FormData();
+            const priceInput = document.getElementById('priceInput')
+            const price = priceInput.value;
+
             formData.append('imagen', fileInput.files[0]);
+            formData.append('price', price);
+
+            console.log(uploadForm)
     
             try {
                 const response = await fetch('/upload', {

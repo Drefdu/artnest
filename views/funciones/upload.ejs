@@ -3,7 +3,7 @@
 <body>
     <%- include('../navbar.ejs') -%>
 
-    <div class="content__header">
+    <div class="content__header"
         <form class="search__container">
             <label class="search__button">
                 <i class="search__icon fa-solid fa-magnifying-glass"><button type="submit"></button></i>
@@ -17,6 +17,8 @@
             <h2>Subir Nueva Imagen</h2>
             <form id="uploadForm" enctype="multipart/form-data">
                 <input id="fileInput" type="file" name="imagen" accept="image/*" >
+                <input id="priceInput" type="text" name="price" placeholder="Price $0" class="form-control" style="text-align: center; padding: 10px; border-radius: 0.5rem; color: white; height: 45px; background-color: #333333; border: 1px solid white">
+                
                 <button type="submit">Subir imagen</button>
             </form>
         </div>
