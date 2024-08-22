@@ -12,38 +12,32 @@ const axios = require('axios');
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-<<<<<<< HEAD
 const url = 'https://rest.clicksend.com/v3/sms/send';
 const username = 'eduelcrack33@gmaial.com';
 const password = '874F1AB5-6774-2CAC-1C7C-AC842085EEAB';
-=======
-// const url = 'https://rest.clicksend.com/v3/sms/send';
-// const username = 'Drefdu404';
-// const password = 'DD5019BE-1C87-0D5D-9307-0851DDCF4232';
->>>>>>> 7c6c0439c2104f2c145f60fc3f8c8605656c44ac
 
 
-// router.post('/confirmation', async (req, res) => {
-//     let { code } = req.body;
+router.post('/confirmation', async (req, res) => {
+    let { code } = req.body;
 
-//     console.log(code);
+    console.log(code);
 
-//     try {
-//         let user = await Usuario.findOne({ code: code });
+    try {
+        let user = await Usuario.findOne({ code: code });
 
-//         if (!user) {
-//             return res.send('<script>alert("Código inválido"); window.location.href = "/confirmation";</script>');
-//         }
+        if (!user) {
+            return res.send('<script>alert("Código inválido"); window.location.href = "/confirmation";</script>');
+        }
 
 
-//         await Usuario.updateOne({ code: code }, { $set: { code_confirmed: true } });
+        await Usuario.updateOne({ code: code }, { $set: { code_confirmed: true } });
 
-//         return res.render("formularios/login", { mensaje: "El usuario ha sido creado satisfactoriamente" });
-//     } catch (error) {
-//         console.error("Error during confirmation process:", error);
-//         return res.status(500).send('<script>alert("Ocurrió un error. Por favor, inténtalo de nuevo."); window.location.href = "/confirmation";</script>');
-//     }
-// });
+        return res.render("formularios/login", { mensaje: "El usuario ha sido creado satisfactoriamente" });
+    } catch (error) {
+        console.error("Error during confirmation process:", error);
+        return res.status(500).send('<script>alert("Ocurrió un error. Por favor, inténtalo de nuevo."); window.location.href = "/confirmation";</script>');
+    }
+});
 
 
 router.post('/database/registro', upload.single('Foto'), async (req, res) => {
@@ -87,36 +81,36 @@ router.post('/database/registro', upload.single('Foto'), async (req, res) => {
             telefono: Telefono,
             password: gen_hash,
             foto: Foto,
-            // code: confirmationCode,
-            // code_confirmed: false,
+            code: confirmationCode,
+            code_confirmed: false,
             preguntaSeguridad: PreguntaSeguridad,
             respuestaSeguridad: RespuestaSeguridad
         });
         const NuevoUsuario = await usuario.save();
-        // const sms = {
-        //     messages: [
-        //         {
-        //             body: `Tu codigo de confirmacion es: ${confirmationCode}`,
-        //             to: `+52${Telefono}`,
-        //             from: "{{from}}"
-        //         }
-        //     ]
-        // };
+        const sms = {
+            messages: [
+                {
+                    body: `Tu codigo de confirmacion es:    ${confirmationCode}`,
+                    to: `+52${Telefono}`,
+                    from: "{{from}}"
+                }
+            ]
+        };
     
-        // axios.post(url, sms,{
-        //     auth: {
-        //         username: username,
-        //         password: password
-        //     }
-        // })
-        // .then(response => {
-        //     console.log('Respuesta:', response.data);
-        //     return res.render('confirmation')
-        // })
-        // .catch(error => {
-        //     console.error('Error:', error);
-        //     res.send('<script>alert("Algo a fallado"); window.location.href = "/login";</script>');
-        // });
+        axios.post(url, sms,{
+            auth: {
+                username: username,
+                password: password
+            }
+        })
+        .then(response => {
+            console.log('Respuesta:', response.data);
+            return res.render('confirmation')
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            res.send('<script>alert("Algo a fallado"); window.location.href = "/login";</script>');
+        });
 
         
 
