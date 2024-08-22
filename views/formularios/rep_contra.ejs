@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtNest</title>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+</head>
+<script>
+    window.onload = function () {
+        '<% if (mensaje) { %>'
+        setTimeout(function () {
+            alert("<%= mensaje %>");
+        }, 100);
+        '<% } %>'
+    };
+</script>
+
+<body>
+    <div class="container">
+        <!-- Carrusel -->
+        <div class="carousel">
+            <div class="slides">
+                <img src="/assets/darwin-collage-animals.png" alt="Image 1">
+                <img src="/assets/darwin-collage-animals.png" alt="Image 2">
+                <img src="/assets/darwin-collage-animals.png" alt="Image 3">
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h2>Recuperar Contraseña</h2>
+            <form action="/database/comprobar-seguridad" method="post">
+                <input type="email" placeholder="Correo" id="Correo" name="Correo" class="form-control form-control-lg"
+                    autocomplete="off" required />
+
+                <label for="PreguntaSeguridad">Selecciona una pregunta de seguridad:</label>
+                <select id="PreguntaSeguridad" name="PreguntaSeguridad" required>
+                    <option value="">-- Selecciona una pregunta --</option>
+                    <option value="nombre_mascota">¿Cuál es el nombre de tu primera mascota?</option>
+                    <option value="ciudad_nacimiento">¿En qué ciudad naciste?</option>
+                    <option value="nombre_escuela">¿Cuál es el nombre de tu escuela primaria?</option>
+                    <option value="mejor_amigo_infancia">¿Cuál es el nombre de tu mejor amigo de la infancia?</option>
+                    <option value="deporte_favorito">¿Cuál es tu deporte favorito?</option>
+                </select>
+
+                <input type="text" placeholder="Respuesta a la pregunta de seguridad" id="RespuestaSeguridad"
+                    name="RespuestaSeguridad" required />
+
+                <button type="submit">Comprobar</button>
+            </form>
+        </div>
+    </div>
+    <script src="js/carousel.js"></script>
+</body>
+<%- include('../layouts/footer.ejs') -%>

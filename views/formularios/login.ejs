@@ -32,8 +32,10 @@
             <form action="/database/login" method="post">
                 <input type="email" placeholder="Correo" id="Correo" name="Correo" class="form-control form-control-lg" autocomplete="off" required />
                 <input type="password" placeholder="Contraseña" id="Password" name="Password" class="form-control form-control-lg" onkeypress="return /[a-zA-Z0-9!#$%&\/?\\¿¡+*~{[^`},;.:_-]/.test(event.key)" title="La contraseña debe contener letras mayúsculas y minúsculas, números y al menos uno de los siguientes símbolos: !#$%&amp;/?\¿¡+*~{[^`},;.:-_" autocomplete="off" required />
+                <p style="text-align: right;">¿Olvidaste tu contraseña? <a href="/cambiar_contra">recuperar</a></p>
                 <button type="submit">Iniciar sesión</button>
             </form>
+            
             <p>¿No tienes una cuenta? <a href="/registro">Regístrate</a></p>
             <p>Inicio <a href="/">Inicio</a></p>
         </div>
