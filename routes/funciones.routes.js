@@ -73,7 +73,7 @@ router.post('/database/registro', upload.single('Foto'), async (req, res) => {
         let hash = crypto.createHash('sha1');
         let data = hash.update(Password, 'utf-8');
         let gen_hash = data.digest('hex');
-        // let confirmationCode = Math.floor(10000 + Math.random() * 90000);
+        let confirmationCode = Math.floor(10000 + Math.random() * 90000);
         const usuario = new Usuario({
             nombre: Nombre,
             apellidos: Apellidos,
@@ -219,15 +219,15 @@ router.post('/database/login', async (req, res) => {
         }
         
 
-        // if(!usuario.code_confirmed) {
-        //     return res.render('confirmation')
-        // } else {
+        if(!usuario.code_confirmed) {
+            return res.render('confirmation')
+        } else {
 
-        //     req.session.usuario = usuario;
-        //     req.session.save()
+            req.session.usuario = usuario;
+            req.session.save()
 
                  return res.redirect('/')
-        // }
+        }
 
         
     } catch (error) {
